@@ -16,9 +16,14 @@ form.addEventListener("submit",function(e){
     const prevAttempList=document.querySelector(".prev-attempt-list")
 
 
-    if((userGuess<1 || isNaN(userGuess)) &&  attempt>0){
-        // console.log(`Enter a valid guess, You have entered ${userGuess<1?userGuess:userGuess}`);
+    if((userGuess<1 || isNaN(userGuess) ||  userGuess>100) &&  attempt>0){
+        if(userGuess>100){
+        errorDisplay.innerHTML=`Enter a guess upto 100`
+        }
+       else{
+         // console.log(`Enter a valid guess, You have entered ${userGuess<1?userGuess:userGuess}`);
         errorDisplay.innerHTML=`Enter a valid guess, You have entered ${userGuess<1?"less than 1":userGuess}`
+       }
     }
     else {
         if(userGuess===numGuess && attempt>0){
@@ -56,6 +61,4 @@ form.addEventListener("submit",function(e){
             },2000)
         }
     }
-
-    
 })
